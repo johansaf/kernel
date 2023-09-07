@@ -6,6 +6,8 @@ unsigned short* video_memory = (unsigned short*)0xb8000;
 int video_cur_pos_cols = 1;
 int video_cur_pos_rows = 1;
 
+void putchar(const char);
+void printf(const char*, ...);
 void clear_screen(void);
 void main(void);
 
@@ -20,6 +22,13 @@ void putchar(const char c) {
   }
 }
 
+void printf(const char* fmt, ...) {
+  while(*fmt) {
+    putchar(*fmt);
+    fmt++;
+  }
+}
+
 void clear_screen(void) {
   for(int i = 0; i <= VIDEO_MAX_COLS*VIDEO_MAX_ROWS; ++i) {
     video_memory[i] = (unsigned short)0x0000;
@@ -29,31 +38,9 @@ void clear_screen(void) {
 void main(void) {
   clear_screen();
 
-  putchar('H');
-  putchar('e');
-  putchar('l');
-  putchar('l');
-  putchar('o');
-  putchar(',');
-  putchar(' ');
-  putchar('w');
-  putchar('o');
-  putchar('r');
-  putchar('l');
-  putchar('d');
-  putchar('!');
-  putchar('\n');
-  putchar('L');
-  putchar('i');
-  putchar('n');
-  putchar('e');
-  putchar(' ');
-  putchar('t');
-  putchar('w');
-  putchar('o');
-  putchar(' ');
-  putchar(':');
-  putchar(')');
+  printf("Hello, world!\n");
+  printf("Line two :)\n");
+  printf("Line three! :D\n");
 
   while(1){}
 }
