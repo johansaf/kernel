@@ -13,11 +13,11 @@ void putchar(const char c) {
   if(c == '\n') {
     ++video_cur_pos_rows;
     video_cur_pos_cols = 1;
+  } else {
+    unsigned short tmp = (c | 7 << 8);
+    video_memory[(video_cur_pos_rows - 1) * VIDEO_MAX_COLS + (video_cur_pos_cols - 1)] = tmp;
+    ++video_cur_pos_cols;
   }
-
-  unsigned short tmp = (c | 7 << 8);
-  video_memory[(video_cur_pos_rows - 1) * VIDEO_MAX_COLS + (video_cur_pos_cols - 1)] = tmp;
-  ++video_cur_pos_cols;
 }
 
 void clear_screen(void) {
@@ -42,6 +42,18 @@ void main(void) {
   putchar('l');
   putchar('d');
   putchar('!');
+  putchar('\n');
+  putchar('L');
+  putchar('i');
+  putchar('n');
+  putchar('e');
+  putchar(' ');
+  putchar('t');
+  putchar('w');
+  putchar('o');
+  putchar(' ');
+  putchar(':');
+  putchar(')');
 
   while(1){}
 }
