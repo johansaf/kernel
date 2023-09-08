@@ -41,6 +41,7 @@ void main(void) {
   printf("Hello, world!\n");
   printf("Line two :)\n");
   printf("Line three! :D\n");
+  printf("Test %% %s %c %d %lx %llu %hd %hhd\n", "abc", 'z', 1, 2ul, 3ull, (short)4, (char)5);
 
   while(1){}
 }
