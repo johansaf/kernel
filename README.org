@@ -1,3 +1,4 @@
 References:
 https://alex.dzyoba.com/blog/multiboot/
 https://os.phil-opp.com/multiboot-kernel/
+https://intermezzos.github.io/book/
