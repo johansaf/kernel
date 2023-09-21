@@ -1,4 +1,4 @@
-ENTRY(_start)
+ENTRY(start)
 
 SECTIONS {
   . = 1M;   /* Load the kernel code at 1M */

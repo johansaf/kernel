@@ -23,9 +23,27 @@ void putchar(const char c) {
 }
 
 void printf(const char* fmt, ...) {
+  int *argp = (int*)&fmt;
+  ++argp;
+
   while(*fmt) {
-    putchar(*fmt);
-    fmt++;
+    switch(*fmt) {
+      case '%':
+        ++fmt;
+        switch(*fmt) {
+          case '%':
+            putchar('%');
+            break;
+          case 's':
+            putchar(*argp);
+            ++argp;
+            break;
+          default: putchar(*fmt); break;
+        }
+      break;
+      default: putchar(*fmt); break;
+    }
+    ++fmt;
   }
 }
 
@@ -35,7 +53,7 @@ void clear_screen(void) {
   }
 }
 
-void main(void) {
+void __cdecl main(void) {
   clear_screen();
 
   printf("Hello, world!\n");
